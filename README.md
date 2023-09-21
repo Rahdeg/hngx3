@@ -19,8 +19,12 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Env files
 
 ```bash
-NEXT_PUBLIC_API_KEY=""
-NEXT_PUBLIC_ACCESS_TOKEN=""
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
 ```
 
 ## Learn More
