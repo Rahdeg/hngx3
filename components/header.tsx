@@ -36,7 +36,7 @@ const Header = () => {
         <header className={cn("text-white  md:px-10 fixed top-0 z-50 flex w-full items-center justify-between px-4 py-1 transition-all lg:px-10 lg:py-3", isScrolled && ' bg-[#2596be]')}>
             <div className=" justify-start items-center flex">
 
-                <div className="text-white flex text-2xl font-bold leading-normal">PIXROOM</div>
+                <div className="text-white flex text-2xl font-bold leading-normal">PIX-ROOM</div>
             </div>
 
             <SearchInput />
