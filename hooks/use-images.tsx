@@ -1,4 +1,4 @@
-import { Images, Movie } from "@/typings";
+import { Images } from "@/typings";
 import { create } from "zustand";
 
 interface StoreImageProps {

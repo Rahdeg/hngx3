@@ -52,7 +52,7 @@ const ImageCard = ({ image }: ImageCardProps) => {
 
 
     return (
-        <div ref={setNodeRef} {...attributes} {...listeners} style={style} data-testid="movie-card" className="w-[350px] h-[250px] flex-col justify-start items-start gap-2 flex py-4 group cursor-pointer"  >
+        <div ref={setNodeRef} {...attributes} {...listeners} style={style} data-testid="image-card" className="w-[350px] h-[250px] flex-col justify-start items-start gap-2 flex py-4 group cursor-pointer"  >
             <ActionTooltip label="Click and Drag Pictures to Re-arrange them" align="center" side="top">
                 <div className="w-[350px] h-[250px] relative shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl">
                     <div className="w-[350px] h-[250px] left-0 top-0 absolute">
@@ -61,7 +61,7 @@ const ImageCard = ({ image }: ImageCardProps) => {
                             src={image.src}
                             alt='gg'
                             fill
-                            data-testid="movie-poster"
+                            data-testid="image-poster"
                             className="rounded-sm object-cover md:rounded left-0 top-0 absolute"
                             loading="lazy"
                         />
