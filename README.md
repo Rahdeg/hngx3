@@ -8,6 +8,9 @@ First, run the development server:
 cd your-project
 npm install
 npm run dev
+login detail: 
+email: rahdegonline@gmail.com
+password: Diamond2023
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
