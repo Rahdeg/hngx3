@@ -38,44 +38,36 @@ const tags = [
 
 const TagList = () => {
 
-    const [isClicked, setIsClicked] = useState(false);
+    const [isTag, setIsTag] = useState('');
 
 
-    const router = useRouter();
-
-
-
-    const { images, setImages } = useImageStore()
+    const { setImages } = useImageStore()
 
 
     const allImages = Images;
 
 
     const onClick = (name: string) => {
-        if (isClicked) {
-            setImages(Images);
-            setIsClicked(false)
-        } else {
-            setIsClicked(true)
-            const tagImage = images.filter((image) => name === image.tag);
-            if (tagImage) {
-                setImages(tagImage)
-            } else {
-                setImages([])
-            }
-        }
+        const tagImage = allImages.filter((image) => name === image.tag);
+        setIsTag(tagImage[0].tag)
+        setImages(tagImage)
+    }
+
+    const reset = () => {
+        setIsTag('')
+        setImages(allImages)
     }
 
     return (
         <div className="flex items-center overflow-x-auto justify-center space-x-8 p-7 ">
             {
                 tags && tags.map((tag) => (
-                    <Button variant="outline" size="sm" className={cn(" text-black")} key={tag.id} onClick={() => onClick(tag.name)}>
+                    <Button variant="outline" size="sm" className={cn(" text-black", tag.name === isTag && "bg-[#2596be]")} key={tag.id} onClick={() => onClick(tag.name)}>
                         {tag.name}
                     </Button>
                 ))
             }
-            <Button variant="outline" size="sm" className=" text-black" onClick={() => setImages(allImages)}>
+            <Button variant="outline" size="sm" className=" text-black" onClick={reset}>
                 reset
             </Button>
 
