@@ -2,39 +2,25 @@
 import { Search } from 'lucide-react'
 import React, { ChangeEventHandler, useCallback, useEffect, useState } from 'react'
 import { Input } from './ui/input'
-import { useDebounce } from '@/hooks/use-debounce'
-
 import useImageStore from '@/hooks/use-images'
+import { Images } from './images/images'
 
 
 const SearchInput = () => {
-  const [value, setValue] = useState("");
-  const debounceValue = useDebounce<string>(value, 1000)
-  const { images } = useImageStore()
+  const images = Images;
   const setImages = useImageStore((state) => state.setImages);
 
 
 
-
-
-
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setValue(e.target.value);
+    setImages(() => {
+      return images.filter((item) =>
+        item.tag.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+    });
   }
 
 
-  const searchProduct = useCallback(async () => {
-    const searchImage = images.filter((image) => debounceValue === image.tag)
-    setImages(searchImage);
-    return;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debounceValue])
-
-
-  useEffect(() => {
-    searchProduct();
-
-  }, [searchProduct]);
 
 
   return (
@@ -43,7 +29,6 @@ const SearchInput = () => {
       <Search className='absolute h-4 w-4 top-2 right-4 text-muted-foreground ' />
       <Input
         onChange={onChange}
-        value={value}
         placeholder='Search...' className='pl-2 w-full h-8 bg-white text-black' />
     </div>
 

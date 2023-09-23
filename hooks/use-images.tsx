@@ -3,13 +3,17 @@ import { create } from "zustand";
 
 interface StoreImageProps {
     images: Images[];
-    setImages: (data: Images[]) => void;
+    setImages: (data: Images[] | ((prevImages: Images[]) => Images[])) => void;
 }
 
-const useImageStore = create<StoreImageProps>((set: any) => ({
+const useImageStore = create<StoreImageProps>((set) => ({
     images: [],
-    setImages: (data: Images[]) => {
-        set({ images: data });
+    setImages: (data) => {
+        if (typeof data === "function") {
+            set((state) => ({ images: data(state.images) }));
+        } else {
+            set({ images: data });
+        }
     },
 }));
 

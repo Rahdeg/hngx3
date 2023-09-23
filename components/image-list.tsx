@@ -51,24 +51,12 @@ const ImageList = ({ data }: ImageListProps) => {
         <div className=" flex items-center justify-center">
 
             {
-                data.length ? (
+                data.length && (
                     <div className="grid grid-cols-1 sm:grid-cols-1 ml-0 md:grid-cols-2 gap-5  lg:grid-cols-3 xl:grid-cols-4 mb-6">
                         <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
 
                             {
                                 images.map((item) => (
-                                    <ImageCard image={item} key={item.id} />
-                                ))
-                            }
-
-                        </DndContext>
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-1 ml-0 md:grid-cols-2 gap-5  lg:grid-cols-3 xl:grid-cols-4 mb-6">
-                        <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
-
-                            {
-                                allImages.map((item) => (
                                     <ImageCard image={item} key={item.id} />
                                 ))
                             }
